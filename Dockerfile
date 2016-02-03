@@ -15,10 +15,10 @@ RUN yum -y update \
     && tar xzvf mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}.tar.gz \
     && rm -f mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}.tar.gz \
     && mv mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}/* /var/www/html/ \
-    && chmod -R 777 /var/www/ \
-    && chmod -R 777 /templates
+    && chmod -R 777 /var/www/
 
 ADD container-files /
+RUN chmod -R 777 /templates
 
 ENV MEDIAWIKI_SITE_NAME semantic-wiki
 ENV MEDIAWIKI_DB_HOST mysql
