@@ -18,7 +18,6 @@ RUN yum -y update \
     && chmod -R 777 /var/www/
 
 ADD container-files /
-RUN chmod -R 777 /templates
 
 ENV MEDIAWIKI_SITE_NAME semantic-wiki
 ENV MEDIAWIKI_DB_HOST mysql
