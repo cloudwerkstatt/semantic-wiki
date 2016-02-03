@@ -1,0 +1,54 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: ImageStream
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: semantic
+    name: semantic-wiki
+  spec: {}
+  status:
+    dockerImageRepository: ""
+- apiVersion: v1
+  kind: BuildConfig
+  metadata:
+    annotations:
+      openshift.io/generated-by: OpenShiftNewApp
+    creationTimestamp: null
+    labels:
+      app: semantic
+    name: semantic-wiki
+  spec:
+    output:
+      to:
+        kind: ImageStreamTag
+        name: semantic-wiki:latest
+    resources: {}
+    source:
+      git:
+        uri: https://github.com/cloudwerkstatt/semantic-wiki.git
+        httpsProxy: http://debre-proxy:8080
+        httpProxy: http://debre-proxy:8080
+      type: Git
+    strategy:
+      dockerStrategy:
+        from:
+          kind: DockerImage
+          name: registry.access.redhat.com/library/rhel:7.2
+      type: Docker
+    triggers:
+    - github:
+        secret: tca_UJh7uJmfkLltIF-9
+      type: GitHub
+    - generic:
+        secret: igH4moaMFWuPp00Or48r
+      type: Generic
+    - type: ConfigChange
+  status:
+    lastVersion: 0
+kind: List
+metadata: {}
+

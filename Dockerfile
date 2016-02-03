@@ -28,4 +28,4 @@ ENV MEDIAWIKI_DB_NAME mediawiki
 
 EXPOSE 8080
 
-CMD docker-entrypoint.sh
+CMD /docker-entrypoint.sh
