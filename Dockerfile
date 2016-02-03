@@ -15,7 +15,8 @@ RUN yum -y update \
     && tar xzvf mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}.tar.gz \
     && rm -f mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}.tar.gz \
     && mv mediawiki-${MEDIA_WIKI_VERSION}.${MEDIA_WIKI_MINOR}/* /var/www/html/ \
-    && chmod -R 777 /var/www/
+    && chmod -R 777 /var/www/ \
+    && chmod -R 777 /templates
 
 ADD container-files /
 
@@ -27,4 +28,4 @@ ENV MEDIAWIKI_DB_NAME mediawiki
 
 EXPOSE 8080
 
-CMD httpd -e debug -DFOREGROUND
+CMD docker-entrypoint.sh
