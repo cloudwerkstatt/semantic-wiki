@@ -18,7 +18,7 @@ objects:
     host: ${APPLICATION_DOMAIN}
     to:
       kind: Service
-	  name: ${SERVICE_NAME}
+      name: ${SERVICE_NAME}
 - apiVersion: v1
   kind: DeploymentConfig
   metadata:
@@ -56,7 +56,11 @@ objects:
             value: ${MYSQL_PASSWORD}
           - name: MEDIAWIKI_DB_NAME
             value: ${MYSQL_DATABASE}
-          image: semantic-wiki:latest
+          - name: MEDIAWIKI_ADMIN_USER
+            value: ${MEDIAWIKI_ADMIN_USER}
+          - name: MEDIAWIKI_ADMIN_PASSWORD
+            value: ${MEDIAWIKI_ADMIN_PASSWORD}
+          image: tdms-wiki:latest
           name: ${SERVICE_NAME}
           ports:
           - containerPort: 8080
@@ -69,8 +73,9 @@ objects:
         containerNames:
         - ${SERVICE_NAME}
         from:
+          namespace: openshift
           kind: ImageStreamTag
-          name: semantic-wiki:latest
+          name: tdms-wiki:latest
       type: ImageChange
   status: {}
 - apiVersion: v1
@@ -173,6 +178,8 @@ objects:
     - type: ConfigChange
   status: {}
 parameters:
+- description: The outside DNS name of the service
+  name: APPLICATION_DOMAIN
 - description: Database service name
   name: DATABASE_SERVICE_NAME
   required: true
@@ -195,3 +202,11 @@ parameters:
   name: MYSQL_DATABASE
   required: true
   value: mediawiki
+- description: Mediawiki Admin User
+  name: MEDIAWIKI_ADMIN_USER
+  required: true
+  value: admin
+- description: Mediawiki Admin Password
+  name: MEDIAWIKI_ADMIN_PASSWORD
+  required: true
+  value: wikiadmin

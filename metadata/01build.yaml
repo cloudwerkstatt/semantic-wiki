@@ -7,8 +7,8 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: semantic
-    name: semantic-wiki
+      app: tdms-wiki
+    name: tdms-wiki
   spec: {}
   status:
     dockerImageRepository: ""
@@ -19,13 +19,13 @@ items:
       openshift.io/generated-by: OpenShiftNewApp
     creationTimestamp: null
     labels:
-      app: semantic
-    name: semantic-wiki
+      app: tdms-wiki
+    name: tdms-wiki
   spec:
     output:
       to:
         kind: ImageStreamTag
-        name: semantic-wiki:latest
+        name: tdms-wiki:latest
     resources: {}
     source:
       git:

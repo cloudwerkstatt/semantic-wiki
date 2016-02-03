@@ -1,4 +1,4 @@
-FROM rhel:7.2
+FROM registry.access.redhat.com/rhel7.2:latest
 
 MAINTAINER Michael Eimke michael.eimke@airbus.com
 
