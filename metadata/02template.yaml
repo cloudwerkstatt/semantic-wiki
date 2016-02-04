@@ -47,7 +47,7 @@ objects:
         containers:
         - env:
           - name: MEDIAWIKI_SITE_NAME
-            value: wiki-test
+            value: ${MEDIAWIKI_SITE_NAME}
           - name: MEDIAWIKI_DB_HOST
             value: ${DATABASE_SERVICE_NAME}
           - name: MEDIAWIKI_DB_USER
@@ -178,16 +178,28 @@ objects:
     - type: ConfigChange
   status: {}
 parameters:
+- description: Mediawiki Admin User
+  name: MEDIAWIKI_ADMIN_USER
+  required: true
+  value: admin
+- description: Mediawiki Admin Password
+  name: MEDIAWIKI_ADMIN_PASSWORD
+  required: true
+  value: wikiadmin
+- description: Mediawiki Site Name
+  name: MEDIAWIKI_SITE_NAME
+  required: true
+  value: semantic-wiki
 - description: The outside DNS name of the service
   name: APPLICATION_DOMAIN
-- description: Database service name
+- description: Internal database service name
   name: DATABASE_SERVICE_NAME
   required: true
-  value: mysql-mediawiki
-- description: Mediawiki service name
+  value: mysql-semantic-wiki
+- description: Internal Semantic-Mediawiki service name
   name: SERVICE_NAME
   required: true
-  value: mediawiki
+  value: semanticwiki
 - description: Username for MySQL user that will be used for accessing the database
   from: user[A-Z0-9]{3}
   generate: expression
@@ -202,11 +214,3 @@ parameters:
   name: MYSQL_DATABASE
   required: true
   value: mediawiki
-- description: Mediawiki Admin User
-  name: MEDIAWIKI_ADMIN_USER
-  required: true
-  value: admin
-- description: Mediawiki Admin Password
-  name: MEDIAWIKI_ADMIN_PASSWORD
-  required: true
-  value: wikiadmin
