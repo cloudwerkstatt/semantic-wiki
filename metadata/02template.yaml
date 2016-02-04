@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: semantic-wiki--ephemeral
+  template: semantic-wiki-ephemeral
 metadata:
   annotations:
     description: 'Mediawiki service, without persistent storage. WARNING: Any data
@@ -73,7 +73,7 @@ objects:
         containerNames:
         - ${SERVICE_NAME}
         from:
-          namespace: airbus
+          namespace: custom-images
           kind: ImageStreamTag
           name: semantic-wiki:latest
       type: ImageChange
