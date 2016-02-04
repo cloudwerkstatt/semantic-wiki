@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Template
 labels:
-  template: mediawiki-ephemeral
+  template: semantic-wiki--ephemeral
 metadata:
   annotations:
     description: 'Mediawiki service, without persistent storage. WARNING: Any data
       stored will be lost upon pod destruction. Only use this template for testing'
     iconClass: icon-php
-    tags: instant-app, mediawiki
+    tags: instant-app, semanticwiki
   name: mediawiki-ephemeral
 objects:
 - apiVersion: v1
@@ -60,7 +60,7 @@ objects:
             value: ${MEDIAWIKI_ADMIN_USER}
           - name: MEDIAWIKI_ADMIN_PASSWORD
             value: ${MEDIAWIKI_ADMIN_PASSWORD}
-          image: tdms-wiki:latest
+          image: semantic-wiki:latest
           name: ${SERVICE_NAME}
           ports:
           - containerPort: 8080
@@ -73,9 +73,9 @@ objects:
         containerNames:
         - ${SERVICE_NAME}
         from:
-          namespace: openshift
+          namespace: airbus
           kind: ImageStreamTag
-          name: tdms-wiki:latest
+          name: semantic-wiki:latest
       type: ImageChange
   status: {}
 - apiVersion: v1
