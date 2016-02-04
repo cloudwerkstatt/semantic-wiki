@@ -8,7 +8,7 @@ metadata:
       stored will be lost upon pod destruction. Only use this template for testing'
     iconClass: icon-php
     tags: instant-app, semanticwiki
-  name: mediawiki-ephemeral
+  name: semantic-wiki-ephemeral
 objects:
 - apiVersion: v1
   kind: Route
