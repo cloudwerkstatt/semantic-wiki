@@ -30,8 +30,6 @@ items:
     source:
       git:
         uri: https://github.com/cloudwerkstatt/semantic-wiki.git
-        httpsProxy: http://debre-proxy:8080
-        httpProxy: http://debre-proxy:8080
       type: Git
     strategy:
       dockerStrategy:

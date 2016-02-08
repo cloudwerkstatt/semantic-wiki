@@ -1,8 +1,6 @@
 FROM registry.access.redhat.com/rhel7.2:latest
 
-MAINTAINER Michael Eimke michael.eimke@airbus.com
-
-ENV https_proxy debre-proxy:8080
+MAINTAINER Udo Urbantschitsch <udo@cloudwerkstatt.com>
 
 ENV MEDIA_WIKI_VERSION 1.26
 ENV MEDIA_WIKI_MINOR 2
